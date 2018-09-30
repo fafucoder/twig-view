@@ -1,0 +1,25 @@
+{
+    "name": "dawn/twig-view",
+    "description": "twig extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "down",
+            "email": "1960754013@qq.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^6.5",
+        "twig/twig": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "FaFu\\Twig\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+          "FaFu\\Twig\\Tests\\": "tests/"
+        }
+    }
+}
