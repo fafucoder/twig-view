@@ -1,5 +1,5 @@
 <?php
-namespace FaFu\Twig;
+namespace Dawn\Twig;
 
 use Twig_Extension;
 use Twig_Function;

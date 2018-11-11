@@ -1,5 +1,5 @@
 <?php
-namespace FaFu\Twig;
+namespace Dawn\Twig;
 
 class View {
 	/**
