@@ -7,25 +7,54 @@ use Twig_Filter;
 
 class Extension extends Twig_Extension{
     /**
+     * Functions instance.
+     * 
+     * @var object
+     */
+    private $functions;
+
+    /**
+     * Construct.
+     */
+    public function __construct() {
+        $this->functions = new Functions();
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName() {
+        return 'dawn/twig';
+    }
+
+    /**
      * Filter extension.
      *
      * @return array
      */
     public function getFilters() {
-        return array(
-            //Filter 没有参数
-            new Twig_Filter('demo', array($this, 'demo')),
-        );
+        $filters = array();
+        foreach ($this->functions->all() as $name => $callback) {
+            $filters[] = new Twig_Filter($name, $callback);
+        }
+
+        return $filters;
     }
 
     /**
-     * Functions extension.
-     *
+     * Function extension.
+     * 
      * @return array
      */
     public function getFunctions() {
-        return array(
-            new Twig_Function('demo', array($this, 'demo_functions')),
-        );
+        $functions = array();
+
+        foreach ($this->functions->all() as $name => $callback) {
+            $functions[] = new Twig_Function($name, $callback);
+        }
+
+        return $functions;
     }
 }

@@ -17,13 +17,6 @@ class View {
 	public $debug = false;
 
 	/**
-	 * 是否开启布局
-	 *
-	 * @var boolean
-	 */
-	public $layout;
-
-	/**
 	 * 视图路径
 	 *
 	 * @var [type]
@@ -60,39 +53,6 @@ class View {
 	}
 
 	/**
-	 * 获取布局
-	 * 
-	 * 如果没有开启布局，返回false，如果开启了布局就返回布局的路径
-	 *
-	 * @return string|false
-	 */
-	public function getLayout() {
-		$layout = $this->layout;
-		
-		if (!$layout) {
-			return false;
-		}
-		//if is absolute path
-		if(0 === strpos($layout, '/')) {
-			return $layout;
-		}
-		if(false === strpos($layout, '.')) {
-			$layout = 'layouts/layout.html';
-		}
-
-		return rtrim($this->path, '\\/') . DIRECTORY_SEPARATOR . $layout;
-	}
-
-	/**
-	 * 设置布局。
-	 *
-	 * @return void
-	 */
-	public function setLayout($layout) {
-		$this->layout = $layout;
-	}
-
-	/**
 	 * 视图渲染
 	 *
 	 * @param string $file
@@ -104,11 +64,4 @@ class View {
 		return $this->view->render($file, $arguments);
 	}
 
-	public function render_partial() {
-
-	}
-
-	public function render_plain() {
-
-	}
 }
